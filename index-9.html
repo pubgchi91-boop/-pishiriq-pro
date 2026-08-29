@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a1015">
+<title>Pishiriq PRO</title>
+<style>
+:root{
+  --bg:#080b10;--panel:#111720;--panel2:#171e28;--gold:#f6bd45;--gold2:#ffd978;
+  --cream:#fff7e6;--muted:#9da7b3;--line:#2b3440;--shadow:0 18px 50px rgba(0,0,0,.34);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;background:
+  radial-gradient(circle at 10% 0%,rgba(246,189,69,.09),transparent 28%),
+  radial-gradient(circle at 90% 10%,rgba(255,255,255,.04),transparent 25%),var(--bg);
+  color:#fff;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  padding-bottom:92px;
+}
+button,input{font:inherit}
+button{cursor:pointer}
+header{
+  position:relative;text-align:center;padding:38px 18px 28px;overflow:hidden;
+  background:linear-gradient(180deg,#0d131b 0%,#0a0f15 100%);
+  border-bottom:1px solid rgba(246,189,69,.18)
+}
+header:before,header:after{
+  content:"";position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none
+}
+header:before{width:220px;height:220px;left:-100px;top:-120px;background:rgba(246,189,69,.12)}
+header:after{width:180px;height:180px;right:-80px;bottom:-110px;background:rgba(255,255,255,.05)}
+.logo{position:relative;color:var(--gold);font-family:Georgia,serif;font-size:clamp(36px,10vw,56px);font-weight:800;letter-spacing:6px;text-shadow:0 4px 24px rgba(246,189,69,.15)}
+.logo2{position:relative;color:var(--cream);font-family:Georgia,serif;font-size:clamp(21px,5vw,30px);font-weight:700;letter-spacing:7px;margin-top:2px}
+.subtitle{position:relative;margin:10px auto 0;max-width:560px;color:#b8a989;font-family:Georgia,serif;font-style:italic;font-size:14px}
+.search{
+  position:sticky;top:0;z-index:40;display:flex;gap:10px;padding:15px max(15px,calc((100% - 1100px)/2));
+  background:rgba(8,11,16,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05)
+}
+.search input{
+  flex:1;min-width:0;background:#151c25;border:1px solid #303a47;border-radius:16px;
+  padding:15px 17px;color:#fff;font-size:16px;outline:none;transition:.2s
+}
+.search input:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(246,189,69,.09)}
+.search button{
+  width:58px;border:1px solid rgba(246,189,69,.3);border-radius:16px;background:linear-gradient(135deg,var(--gold2),var(--gold));
+  font-size:22px;box-shadow:0 8px 22px rgba(246,189,69,.16)
+}
+.countries{
+  display:flex;gap:10px;overflow-x:auto;padding:17px 15px 14px;max-width:1130px;margin:auto;
+  scrollbar-width:none
+}
+.countries::-webkit-scrollbar{display:none}
+.country{
+  flex:0 0 auto;border:1px solid #303946;border-radius:999px;padding:11px 16px;color:#dfe5eb;
+  font-size:13px;font-weight:800;background:#151c24;transition:.2s;white-space:nowrap
+}
+.country:hover{transform:translateY(-1px);border-color:#687384}
+.country.active{color:#17120a;background:linear-gradient(135deg,var(--gold2),var(--gold));border-color:transparent;box-shadow:0 7px 20px rgba(246,189,69,.18)}
+.turkey{background:#7e2d27}.italy{background:#07503e}
+.section-title{max-width:1130px;margin:auto;padding:12px 20px 18px}
+.section-title h1{margin:0;color:var(--cream);font-family:Georgia,serif;font-size:clamp(27px,6vw,38px);letter-spacing:.3px}
+.section-title h1:after{content:"";display:block;width:58px;height:3px;margin-top:11px;border-radius:10px;background:var(--gold)}
+.section-title p{color:var(--muted);margin:9px 0 0;font-size:14px}
+.grid{
+  max-width:1130px;margin:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:0 15px 35px
+}
+.card{
+  position:relative;background:linear-gradient(145deg,#151d27,#10161e);border:1px solid #29323e;border-radius:20px;
+  overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .22s,box-shadow .22s,border-color .22s
+}
+.card:hover{transform:translateY(-5px);border-color:rgba(246,189,69,.48);box-shadow:0 24px 60px rgba(0,0,0,.44)}
+.card:active{transform:scale(.985)}
+.card img{width:100%;height:190px;object-fit:cover;display:block;background:#20282e;transition:transform .35s}
+.card:hover img{transform:scale(1.035)}
+.card-body{padding:14px 14px 15px}
+.card h2{color:var(--gold2);font-family:Georgia,serif;font-size:21px;margin:0 0 7px;line-height:1.15}
+.card p{color:#cbd1d8;font-size:13px;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:13px}
+.tag{font-size:12px;color:#8793a0}
+.open{
+  color:#15110a;border:0;border-radius:12px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;
+  font-size:22px;background:linear-gradient(135deg,var(--gold2),var(--gold));box-shadow:0 6px 16px rgba(246,189,69,.15)
+}
+.empty{grid-column:1/-1;text-align:center;color:#aab2bc;padding:55px 15px;background:#111820;border:1px dashed #374250;border-radius:18px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:100;overflow-y:auto;padding:20px;backdrop-filter:blur(8px)}
+.modal.show{display:block}
+.modal-box{max-width:760px;margin:0 auto;background:#0f161e;border:1px solid #3b4654;border-radius:25px;overflow:hidden;box-shadow:0 30px 90px #000}
+.modal-top{position:relative}
+.modal-top img{width:100%;height:320px;object-fit:cover;background:#20282e}
+.close,.favorite{
+  position:absolute;top:14px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.2);
+  background:rgba(12,17,23,.78);color:white;font-size:24px;backdrop-filter:blur(10px)
+}
+.close{left:14px}.favorite{right:14px;color:#ff8490}
+.modal-content{padding:22px}
+.modal-content h1{color:var(--gold2);font-family:Georgia,serif;font-size:clamp(29px,7vw,40px);margin:0;line-height:1.1}
+.country-name{color:#9faab6;margin:7px 0 17px}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+.info div{background:#18212b;border:1px solid #293541;padding:12px 5px;border-radius:14px;text-align:center}
+.info b{display:block;color:var(--gold);font-size:11px;letter-spacing:.4px}.info span{color:#e0e5ea;font-size:12px}
+.box{background:#141c24;border:1px solid #293541;border-radius:17px;margin-top:13px;padding:16px}
+.box h3{color:var(--gold);font-family:Georgia,serif;margin:0 0 11px;font-size:19px}
+.box p{line-height:1.65;color:#d5dbe1;margin:0}.ingredients{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.ingredients div{color:#e7ebef;font-size:14px;background:#10171e;border-radius:10px;padding:8px 9px}
+.steps{list-style:none;padding:0;margin:0}
+.steps li{display:flex;gap:11px;margin:11px 0;color:#e7ebef;line-height:1.5}
+.number{min-width:28px;height:28px;border-radius:50%;background:var(--gold);color:#17120a;display:flex;align-items:center;justify-content:center;font-weight:900}
+.bottom{
+  position:fixed;bottom:0;left:0;right:0;background:rgba(13,19,26,.94);border-top:1px solid rgba(246,189,69,.18);
+  display:flex;justify-content:center;z-index:50;backdrop-filter:blur(15px);padding-bottom:env(safe-area-inset-bottom)
+}
+.bottom button{flex:1;max-width:200px;background:none;border:0;color:#aeb7c1;padding:10px 3px 9px;font-size:11px;transition:.2s}
+.bottom button span{display:block;font-size:23px;margin-bottom:3px;color:#d8a83d}
+.bottom button:hover{color:#fff}
+@media(max-width:600px){
+  .search{padding:10px 12px}
+  .countries{padding:13px 12px 12px}
+  .section-title{padding:10px 15px 16px}
+  .grid{grid-template-columns:1fr;padding:0 12px 28px;gap:12px}
+  .card{display:flex;min-height:142px;border-radius:18px}
+  .card img{width:140px;height:140px;flex:0 0 140px}
+  .card-body{padding:12px}
+  .card h2{font-size:19px}
+  .card p{-webkit-line-clamp:4;font-size:12px}
+  .modal{padding:0}
+  .modal-box{margin:0;min-height:100vh;border-radius:0}
+  .modal-top img{height:245px}
+  .modal-content{padding:17px}
+  .ingredients{grid-template-columns:1fr}
+}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1050px){.grid{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">PISHIRIQ</div>
+<div class="logo2">PRO</div>
+<div class="subtitle">Dunyoning mashhur pishiriqlari retseptlari</div>
+</header>
+
+<div class="search">
+<input id="search" type="text" placeholder="Pishiriq yoki davlat qidiring..." oninput="render()">
+<button onclick="render()">🔎</button>
+</div>
+
+<div class="countries">
+<button class="country active" onclick="chooseCountry('Barchasi',this)">🌍 BARCHASI</button>
+<button class="country turkey" onclick="chooseCountry('Turkiya',this)">🇹🇷 TURKIYA</button>
+<button class="country italy" onclick="chooseCountry('Italiya',this)">🇮🇹 ITALIYA</button>
+<button class="country" onclick="chooseCountry('Fransiya',this)">🇫🇷 FRANSIYA</button>
+<button class="country" onclick="chooseCountry('Yaponiya',this)">🇯🇵 YAPONIYA</button>
+<button class="country" onclick="chooseCountry('Hindiston',this)">🇮🇳 HINDISTON</button>
+</div>
+
+<div class="section-title">
+<h1 id="title">DUNYO PISHIRIQLARI</h1>
+<p>Mashhur davlatlarning eng mazali pishiriqlari · <span id="count">0</span> ta retsept</p>
+</div>
+<div id="grid" class="grid"></div>
+
+<div id="modal" class="modal" onclick="if(event.target===this)closeModal()">
+<div class="modal-box">
+<div class="modal-top">
+<img id="modalImage" alt="">
+<button class="close" onclick="closeModal()">←</button>
+<button id="favBtn" class="favorite" onclick="toggleFavorite()">♡</button>
+</div>
+<div class="modal-content">
+<h1 id="modalTitle"></h1>
+<div id="modalCountry" class="country-name"></div>
+<div class="info">
+<div><b>⏱ VAQT</b><span id="modalTime"></span></div>
+<div><b>🔥 PISHIRISH</b><span id="modalCook"></span></div>
+<div><b>⭐ DARAJA</b><span id="modalDifficulty"></span></div>
+</div>
+<div class="box"><h3>📖 TAVSIF</h3><p id="modalDesc"></p></div>
+<div class="box"><h3>🛒 MASALLIQLAR</h3><div id="modalIngredients" class="ingredients"></div></div>
+<div class="box"><h3>👨‍🍳 TAYYORLASH USULI</h3><ol id="modalSteps" class="steps"></ol></div>
+</div>
+</div>
+</div>
+
+<div class="bottom">
+<button onclick="showAll()"><span>⌂</span>Bosh sahifa</button>
+<button onclick="showFavorites()"><span>♡</span>Sevimlilar</button>
+<button onclick="showAll()"><span>▦</span>Kategoriyalar</button>
+</div>
+
+<script>
+const img={
+bak:"https://images.unsplash.com/photo-1519671282429-b44660ead0a7?auto=format&fit=crop&w=900&q=85",
+sweet:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85",
+cake:"https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=900&q=85",
+dessert:"https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=85",
+cookie:"https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=85",
+bread:"https://images.unsplash.com/photo-1603532648955-039310d9ed75?auto=format&fit=crop&w=900&q=85",
+croissant:"https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=900&q=85",
+macaron:"https://images.unsplash.com/photo-1569864358642-9d1684040f43?auto=format&fit=crop&w=900&q=85",
+mochi:"https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=900&q=85"
+};
+
+const recipes=[
+["Baklava","Turkiya","🇹🇷",img.bak,"60 daqiqa","40–45 daqiqa","O‘rtacha","Yupqa yufka qatlamlari, yong‘oq va shirin siropdan tayyorlanadigan mashhur turk shirinligi.",["500 g yufka","250 g sariyog‘","300 g yong‘oq","2 stakan shakar","1.5 stakan suv","1 choy qoshiq limon sharbati"],["Sariyog‘ni eritib oling.","Yufkalarni qolipga qatlamlab joylang.","Har bir necha qatlam orasiga sariyog‘ surting.","Maydalangan yong‘oqni soling.","Qolgan yufkalarni ustiga joylang.","Baklavani bo‘laklarga kesing.","180°C pechda 40–45 daqiqa pishiring.","Shakar, suv va limondan sirop tayyorlang.","Issiq baklavaga siropni quying.","Sovitib dasturxonga torting."]],
+["Künefe","Turkiya","🇹🇷",img.sweet,"45 daqiqa","25–30 daqiqa","O‘rtacha","Kadayıf, eritilgan pishloq va shirin sirop bilan tayyorlanadigan issiq turk shirinligi.",["500 g kadayıf","200 g sariyog‘","300 g tuzsiz pishloq","2 stakan shakar","1.5 stakan suv","Limon sharbati","Pista"],["Kadayıfni mayda qilib ajrating.","Eritilgan sariyog‘ bilan aralashtiring.","Qolipga kadayıfning yarmini bosing.","Pishloqni o‘rtasiga joylang.","Qolgan kadayıfni ustiga qo‘ying.","180°C da tillarang bo‘lguncha pishiring.","Shakar va suvdan sirop tayyorlang.","Issiq künefega sirop quying.","Ustiga pista sepib xizmat qiling."]],
+["Revani","Turkiya","🇹🇷",img.cake,"50 daqiqa","30–35 daqiqa","Oson","Yumshoq irmikli, limonli sirop shimdirilgan an’anaviy turk shirinligi.",["3 dona tuxum","1 stakan shakar","1 stakan yogurt","1 stakan irmik","1 stakan un","1 choy qoshiq qabartma","Vanilin"],["Tuxum va shakarni ko‘pirtiring.","Yogurt va irmikni qo‘shing.","Un, qabartma va vanilinni soling.","Xamirni qolipga quying.","180°C da 30–35 daqiqa pishiring.","Shakar va suvdan sirop tayyorlang.","Pishgan revaniga sirop quying.","Sovitib bo‘laklarga bo‘ling."]],
+["Şekerpare","Turkiya","🇹🇷",img.cookie,"50 daqiqa","25 daqiqa","Oson","Og‘izda eriydigan, shirin sirop shimdirilgan yumshoq turk pechenyesi.",["125 g sariyog‘","1 dona tuxum","1/2 stakan shakar","2 stakan un","1/2 stakan irmik","1 choy qoshiq qabartma","Bodom"],["Sariyog‘, tuxum va shakarni aralashtiring.","Irmik va unni qo‘shing.","Qabartma solib yumshoq xamir qiling.","Kichik dumaloq shakllar yasang.","Ustiga bodom qo‘ying.","180°C da tillarang bo‘lguncha pishiring.","Tayyor siropni ustidan quying.","Siropni shimdirib xizmat qiling."]],
+["Lokma","Turkiya","🇹🇷",img.sweet,"70 daqiqa","15 daqiqa","O‘rtacha","Mayda qovurilgan xamir bo‘laklari shirin siropga botiriladigan turk shirinligi.",["3 stakan un","1 osh qoshiq xamirturush","1 osh qoshiq shakar","2 stakan iliq suv","Tuz","Qovurish uchun yog‘","Shakarli sirop"],["Iliq suv, xamirturush va shakarni aralashtiring.","Un va tuz qo‘shing.","Yumshoq xamir tayyorlang.","45–60 daqiqa tindiring.","Kichik bo‘laklarni issiq yog‘da qovuring.","Tillarang bo‘lgach yog‘dan oling.","Shirin siropga soling.","Bir necha daqiqadan keyin xizmat qiling."]],
+["Sütlaç","Turkiya","🇹🇷",img.dessert,"40 daqiqa","25 daqiqa","Oson","Sut va guruchdan tayyorlanadigan an’anaviy turk sutli shirinligi.",["1 litr sut","1/2 stakan guruch","1 stakan shakar","2 osh qoshiq kraxmal","Vanilin","Dolchin"],["Guruchni suvda yumshaguncha pishiring.","Sutni qo‘shing.","Shakarni solib aralashtiring.","Kraxmalni sovuq suvda eritib qo‘shing.","Aralashtirib quyuqlashtiring.","Idishlarga soling.","Sovitib ustiga dolchin seping."]],
+["Tiramisu","Italiya","🇮🇹",img.dessert,"30 daqiqa","Pishirilmaydi","Oson","Mascarpone kremi, qahva va savoiardi pechenyesidan tayyorlanadigan mashhur italyan deserti.",["250 g mascarpone","3 dona tuxum","100 g shakar","200 g savoiardi","250 ml qahva","Kakao"],["Tuxum sarig‘i va shakarni aralashtiring.","Mascarponeni qo‘shing.","Tuxum oqini alohida ko‘pirtiring.","Oqni kremga ehtiyotkorlik bilan qo‘shing.","Savoiardini qahvaga tez botiring.","Idishga pechenye qatlamini qo‘ying.","Ustidan krem surting.","Qatlamlarni takrorlang.","Ustiga kakao seping.","Muzlatkichda kamida 4 soat saqlang."]],
+["Cannoli","Italiya","🇮🇹",img.cookie,"60 daqiqa","20 daqiqa","Qiyin","Qarsildoq qobiq ichiga ricotta kremi solinadigan mashhur Sitsiliya shirinligi.",["250 g un","30 g shakar","30 g sariyog‘","1 dona tuxum","500 g ricotta","100 g shakar kukuni","Shokolad","Pista"],["Un, shakar, sariyog‘ va tuxumdan xamir qiling.","Xamirni yupqa yoying.","Dumaloq qilib kesing.","Maxsus qolipga o‘rang.","Qizigan yog‘da qovuring.","Ricotta va shakar kukunidan krem tayyorlang.","Kremni sovigan qobiqqa to‘ldiring.","Uchlarini pista yoki shokolad bilan bezang."]],
+["Panna Cotta","Italiya","🇮🇹",img.dessert,"20 daqiqa","10 daqiqa","Oson","Yumshoq qaymoqli italyan deserti, meva sousi bilan tortiladi.",["500 ml qaymoq","80 g shakar","10 g jelatin","Vanilin","Meva sousi"],["Jelatinni sovuq suvda iviting.","Qaymoq va shakarni qizdiring.","Vanilin qo‘shing.","Jelatinni eritib qaymoqqa qo‘shing.","Qoliplarga quying.","Muzlatkichda 4–6 soat qotiring.","Meva sousi bilan xizmat qiling."]],
+["Panettone","Italiya","🇮🇹",img.bread,"4 soat","45 daqiqa","Qiyin","Mayiz va shakarlangan mevalar bilan tayyorlanadigan italyan bayram noni.",["500 g un","100 g shakar","100 g sariyog‘","3 dona tuxum","200 ml sut","Xamirturush","Mayiz","Shakarlangan mevalar"],["Iliq sut va xamirturushni aralashtiring.","Un, shakar, tuxum va sariyog‘ qo‘shing.","Yumshoq xamir qoring.","Mayiz va mevalarni qo‘shing.","Xamirni tindiring.","Qolipga solib yana tindiring.","170°C da 40–50 daqiqa pishiring.","Sovitib xizmat qiling."]],
+["Biscotti","Italiya","🇮🇹",img.cookie,"60 daqiqa","35 daqiqa","Oson","Ikki marta pishiriladigan qarsildoq italyan bodomli pechenyesi.",["250 g un","150 g shakar","2 dona tuxum","100 g bodom","1 choy qoshiq qabartma","Vanilin"],["Tuxum va shakarni aralashtiring.","Un va qabartmani qo‘shing.","Bodomni soling.","Uzun shaklda xamir tayyorlang.","180°C da 20–25 daqiqa pishiring.","Sovitib kesing.","Kesilgan bo‘laklarni yana 5–10 daqiqa pishiring."]],
+["Sfogliatelle","Italiya","🇮🇹",img.cake,"2 soat","25 daqiqa","Qiyin","Yupqa qatlamli, qarsildoq italyan pishirig‘i.",["500 g un","200 ml suv","50 g shakar","100 g sariyog‘","250 g ricotta","100 g shakar kukuni","Limon po‘sti"],["Un, suv va shakar bilan xamir tayyorlang.","Xamirni juda yupqa yoying.","Sariyog‘ surting va qatlamlab o‘rang.","Muzlatkichda tindiring.","Ricotta, shakar va limon po‘stidan ichlik tayyorlang.","Xamirga ichlik soling.","Qobiq shaklini bering.","200°C da tillarang bo‘lguncha pishiring."]],
+["Croissant","Fransiya","🇫🇷",img.croissant,"3 soat","20 daqiqa","Qiyin","Sariyog‘li qatlamlardan tayyorlanadigan mashhur fransuz pishirig‘i.",["500 g un","250 ml sut","50 g shakar","10 g xamirturush","250 g sariyog‘","Tuz"],["Un, sut, shakar va xamirturushdan xamir qiling.","Xamirni tindiring.","Sariyog‘ni xamir orasiga joylang.","Bir necha marta yoyib buklang.","Uchburchak qilib kesing.","Croissant shaklida o‘rang.","180°C da 20 daqiqa pishiring."]],
+["Macaron","Fransiya","🇫🇷",img.macaron,"60 daqiqa","15 daqiqa","Qiyin","Bodom uni va kremdan tayyorlanadigan nafis fransuz shirinligi.",["100 g bodom uni","180 g shakar kukuni","100 g tuxum oqi","50 g shakar","Krem"],["Bodom uni va shakar kukunini elang.","Tuxum oqini ko‘pirtiring.","Shakar qo‘shib yana ko‘pirtiring.","Quruq mahsulotlarni aralashtiring.","Xamirni kichik doiralar qilib chiqaring.","Dam oldiring.","150°C da 12–15 daqiqa pishiring.","Sovigach krem bilan birlashtiring."]],
+["Mochi","Yaponiya","🇯🇵",img.mochi,"40 daqiqa","10 daqiqa","O‘rtacha","Yumshoq guruch unidan tayyorlanadigan mashhur yapon shirinligi.",["200 g mochiko","100 g shakar","250 ml suv","Kraxmal","Qizil loviya pastasi"],["Mochiko va shakarni aralashtiring.","Suv qo‘shing.","Bug‘da yoki mikroto‘lqinli pechda pishiring.","Yopishqoq massa hosil qiling.","Kraxmal sepilgan joyga oling.","Kichik bo‘laklarga ajrating.","Ichiga loviya pastasi soling.","Dumaloq shakl bering."]],
+["Gulab Jamun","Hindiston","🇮🇳",img.sweet,"50 daqiqa","20 daqiqa","O‘rtacha","Sut kukunidan tayyorlanib, shirin siropga botiriladigan mashhur hind shirinligi.",["200 g sut kukuni","50 g un","1 choy qoshiq pishirish kukuni","100 ml sut","Qovurish uchun yog‘","Shakar siropi","Kardamon"],["Sut kukuni, un va pishirish kukunini aralashtiring.","Sut qo‘shib yumshoq xamir tayyorlang.","Kichik dumaloq shakllar yasang.","Yog‘da tillarang bo‘lguncha qovuring.","Shakar siropiga soling.","20 daqiqa tindiring.","Kardamon bilan bezab xizmat qiling."]]
+];
+
+let country="Barchasi", current=-1;
+let favorites=JSON.parse(localStorage.getItem("favorites")||"[]");
+
+function chooseCountry(c,btn){
+country=c;
+document.querySelectorAll(".country").forEach(x=>x.classList.remove("active"));
+btn.classList.add("active");
+render();
+}
+function render(){
+const q=document.getElementById("search").value.toLowerCase().trim();
+let list=recipes.map((r,i)=>({r,i})).filter(x=>(country==="Barchasi"||x.r[1]===country)&&(!q||(x.r[0]+" "+x.r[1]).toLowerCase().includes(q)));
+const grid=document.getElementById("grid");
+grid.innerHTML="";
+if(!list.length){grid.innerHTML='<div class="empty">Hech qanday pishiriq topilmadi.</div>';return}
+list.forEach(x=>{
+const r=x.r;
+grid.innerHTML+=`<div class="card" onclick="openRecipe(${x.i})"><img src="${r[3]}" alt="${r[0]}" loading="lazy" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#171e28,#6b4b2f)';"><div class="card-body"><h2>${r[2]} ${r[0]}</h2><p>${r[7]}</p><div class="card-bottom"><span class="tag">${r[1]} • ${r[6]}</span><span class="open">›</span></div></div></div>`;
+});
+}
+function openRecipe(i){
+current=i;const r=recipes[i];
+modalImage.src=r[3];modalTitle.textContent=r[2]+" "+r[0];modalCountry.textContent=r[2]+" "+r[1];
+modalTime.textContent=r[4];modalCook.textContent=r[5];modalDifficulty.textContent=r[6];modalDesc.textContent=r[7];
+modalIngredients.innerHTML=r[8].map(x=>`<div>• ${x}</div>`).join("");
+modalSteps.innerHTML=r[9].map((x,n)=>`<li><span class="number">${n+1}</span><span>${x}</span></li>`).join("");
+favBtn.textContent=favorites.includes(i)?"♥":"♡";
+modal.classList.add("show");document.body.style.overflow="hidden";
+}
+function closeModal(){modal.classList.remove("show");document.body.style.overflow=""}
+function toggleFavorite(){
+if(current<0)return;
+if(favorites.includes(current))favorites=favorites.filter(x=>x!==current);else favorites.push(current);
+localStorage.setItem("favorites",JSON.stringify(favorites));
+favBtn.textContent=favorites.includes(current)?"♥":"♡";
+}
+function showFavorites(){
+document.getElementById("search").value="";
+const grid=document.getElementById("grid");
+const list=favorites.map(i=>recipes[i]).filter(Boolean);
+document.querySelectorAll(".country").forEach(x=>x.classList.remove("active"));
+if(!list.length){grid.innerHTML='<div class="empty">♡ Hozircha sevimlilar yo‘q.<br>Pishiriqni ochib, yurak tugmasini bosing.</div>';return}
+grid.innerHTML=list.map(r=>{
+const i=recipes.indexOf(r);
+return `<div class="card" onclick="openRecipe(${i})"><img src="${r[3]}" alt="${r[0]}" loading="lazy" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#171e28,#6b4b2f)';"><div class="card-body"><h2>${r[2]} ${r[0]}</h2><p>${r[7]}</p><div class="card-bottom"><span class="tag">${r[1]}</span><span class="open">♥</span></div></div></div>`;
+}).join("");
+}
+function showAll(){
+country="Barchasi";document.getElementById("search").value="";
+document.querySelectorAll(".country").forEach(x=>x.classList.remove("active"));
+document.querySelector(".country").classList.add("active");
+render();window.scrollTo({top:0,behavior:"smooth"});
+}
+render();
+</script>
+</body>
+</html>
